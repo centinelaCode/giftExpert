@@ -14,6 +14,30 @@ export const GifsApp = () => {
    }
 
    const handleSearch = ( query: string ) => {
+      query = query.toLowerCase().trim()
+
+      //! Validamos que el query no este vacio
+      if( query.length === 0 ) return
+
+      //! convertimos a minusculas y quitamos espacios en blancos
+      // const clearQuery: string = query.replace(/\s+/g, " ");
+      
+      //! verificamos que ya existe ese termino de busqueda no haga nada
+      if (lastSearches.includes(query)) return
+      
+      console.log(query)
+      
+      //! si no existe lo agregamos al inicio del arreglo limitandolo a 8 elementos
+      // const currentTerms = lastSearches.slice(0,6)
+      // currentTerms.unshift(query)
+      // setLastSearches(currentTerms)
+
+      setLastSearches( [query, ...lastSearches].splice(0,8) )
+
+      // console.log(currentTerms)
+
+
+
       console.log({ query })
    }
 
